@@ -2,64 +2,69 @@ package com.dev_marinov.profitovtest
 
 
 import android.content.Context
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
+import android.media.Image
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
-import androidx.cardview.widget.CardView
-import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 
 
-class AdapterList(val context: Context, var arrayList: ArrayList<String> = ArrayList())
+class AdapterList(val context: Context, var arrayList: ArrayList<String> = ArrayList(), var recyclerView: RecyclerView)
     : RecyclerView.Adapter<AdapterList.ViewHolder>(){
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdapterList.ViewHolder {
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdapterList.ViewHolder {
         val view: View = LayoutInflater.from(parent.context).inflate(R.layout.rv_list, parent, false)
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: AdapterList.ViewHolder, position: Int) {
 
-        holder.tvId.setText(arrayList[position]).toString()
+        val myPos = position % arrayList.size
+        holder.tvId.setText(arrayList[myPos]).toString()
 
-//        holder.tvCategory.setText(arrayList[position])
-//
-//        holder.cardView.setOnClickListener(object : View.OnClickListener{ // клик по элементу
-//            override fun onClick(view: View?) {
-//
-//                // передача интерфейсу выбранной категории
-//               // MainActivity.myInterFace.methodMyInterFace(holder.tvCategory.text.toString())
-//
-//                    // запись позиции и обновление
-//                // Нижняя строка похожа на проверку безопасности, потому что иногда держатель может быть нулевым,
-//                // в этом случае getAdapterPosition() вернет RecyclerView.NO_POSITION
-//                if (holder.adapterPosition == RecyclerView.NO_POSITION) return
-//
-//                // Updating old as well as new positions
-//                notifyItemChanged((context as MainActivity).selected_position!!)
-//                (context as MainActivity).selected_position = holder.adapterPosition
-//                notifyItemChanged((context as MainActivity).selected_position!!)
-//            }
-//        })
-//
-//        // Если selected_position равен или не
-//        holder.tvCategory.setTextColor(if ((context as MainActivity).selected_position!!
-//            == position) Color.parseColor("#FFBB33") else Color.GRAY)
-//
-//        holder.cardView.setBackgroundResource(if ((context as MainActivity).selected_position!!
-//            == position) R.drawable.button_turn_off else Color.TRANSPARENT)
+
+
+
+
+
+
+        holder.imgArrowLeft.setOnClickListener(View.OnClickListener {
+            MainActivity.interFaceAdapter.myInterFaceAdapter("left")
+        })
+
+        holder.imgArrowRight.setOnClickListener(View.OnClickListener {
+            MainActivity.interFaceAdapter.myInterFaceAdapter("right")
+        })
     }
 
+
+    // Возвращает количество элементов списка.
     override fun getItemCount(): Int {
-        return arrayList.size
+        return if (arrayList.size == 0) 0 else Integer.MAX_VALUE
     }
+
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         //val tvCategory: TextView = itemView.findViewById(R.id.tvCategory)
         val tvId: TextView = itemView.findViewById(R.id.tvId)
+        val imgArrowLeft: ImageView = itemView.findViewById(R.id.imgArrowLeft)
+        val imgArrowRight: ImageView = itemView.findViewById(R.id.imgArrowRight)
+
+    }
+    init {
+
+
+
+
+
+
     }
 
+
 }
+
+
+

@@ -3,9 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/I_AM/PROFESSION_DEVELOPER/MY_PROJECTS/HELP_PROJECTS/ProfitovTest/app/src/main/res/drawable/line_divider.xml" value="0.12604166666666666" />
+        <entry key="..\:/I_AM/PROFESSION_DEVELOPER/MY_PROJECTS/HELP_PROJECTS/ProfitovTest/app/src/main/res/drawable/www.xml" value="0.12604166666666666" />
         <entry key="..\:/I_AM/PROFESSION_DEVELOPER/MY_PROJECTS/HELP_PROJECTS/ProfitovTest/app/src/main/res/layout/activity_main.xml" value="0.22395833333333334" />
-        <entry key="..\:/I_AM/PROFESSION_DEVELOPER/MY_PROJECTS/HELP_PROJECTS/ProfitovTest/app/src/main/res/layout/fragment_list.xml" value="0.22395833333333334" />
-        <entry key="..\:/I_AM/PROFESSION_DEVELOPER/MY_PROJECTS/HELP_PROJECTS/ProfitovTest/app/src/main/res/layout/rv_list.xml" value="0.22395833333333334" />
+        <entry key="..\:/I_AM/PROFESSION_DEVELOPER/MY_PROJECTS/HELP_PROJECTS/ProfitovTest/app/src/main/res/layout/fragment_list.xml" value="0.25343999226562525" />
+        <entry key="..\:/I_AM/PROFESSION_DEVELOPER/MY_PROJECTS/HELP_PROJECTS/ProfitovTest/app/src/main/res/layout/rv_list.xml" value="0.25343999226562525" />
       </map>
     </option>
   </component>

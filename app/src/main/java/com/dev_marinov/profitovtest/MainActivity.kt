@@ -3,6 +3,7 @@ package com.dev_marinov.profitovtest
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowInsetsController
@@ -16,6 +17,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        Log.e("333","-MainActivity-")
+
 
         supportActionBar?.hide() // скрыть экшен бар
         setWindow() // установки окна
@@ -31,6 +34,8 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
+
 
     fun setWindow() {
         val window = window
@@ -62,4 +67,18 @@ class MainActivity : AppCompatActivity() {
                     )
         }
     }
+
+    // интерфейс для срабатывания notifyDataSetChanged после заполнения hashmap данными
+    interface InterFaceAdapter {
+        fun myInterFaceAdapter(leftOrRight: String)
+    }
+
+    fun setInterFaceAdapter(myinterFaceAdapter: InterFaceAdapter) {
+        Companion.interFaceAdapter = myinterFaceAdapter
+    }
+
+    companion object { // статический интерфейс
+        lateinit var interFaceAdapter: InterFaceAdapter
+    }
+
 }
