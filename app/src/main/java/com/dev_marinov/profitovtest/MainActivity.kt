@@ -12,27 +12,26 @@ import androidx.core.content.ContextCompat
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var arrayList: ArrayList<String> // массив для хранения категорий шуток
+    lateinit var arrayListNumbers: ArrayList<String> // массив для хранения категорий номеров
+    lateinit var arrayListNumbersCopy: ArrayList<String> // массив для хранения категорий номеров
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         Log.e("333","-MainActivity-")
 
-
         supportActionBar?.hide() // скрыть экшен бар
         setWindow() // установки окна
         hideSystemUI()
 
-        arrayList = ArrayList()
+        arrayListNumbers = ArrayList()
+        arrayListNumbersCopy = ArrayList()
 
         val fragmentList = FragmentList()
         val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.add(R.id.llFragList, fragmentList)
         fragmentTransaction.commit()
-
-
     }
 
 
@@ -68,17 +67,37 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
+    companion object { // статический интерфейс
+        lateinit var interFaceAdapter: InterFaceAdapter
+        lateinit var interFaceUpdateAdapter: InterFaceUpdateAdapter
+        lateinit var interFaceStop: InterFaceStop
+    }
     // интерфейс для срабатывания notifyDataSetChanged после заполнения hashmap данными
     interface InterFaceAdapter {
         fun myInterFaceAdapter(leftOrRight: String)
     }
-
     fun setInterFaceAdapter(myinterFaceAdapter: InterFaceAdapter) {
         Companion.interFaceAdapter = myinterFaceAdapter
     }
 
-    companion object { // статический интерфейс
-        lateinit var interFaceAdapter: InterFaceAdapter
+    // интерфейс для срабатывания notifyDataSetChanged после заполнения hashmap данными
+    interface InterFaceUpdateAdapter {
+        fun myInterFaceUpdateAdapter()
     }
+    fun setInterFaceUpdateAdapter(myinterFaceUpdateAdapter: InterFaceUpdateAdapter) {
+        Companion.interFaceUpdateAdapter = myinterFaceUpdateAdapter
+    }
+
+    // интерфейс для срабатывания notifyDataSetChanged после заполнения hashmap данными
+    interface InterFaceStop {
+        fun myInterFaceStop(type: String)
+    }
+    fun setInterFaceStop(myinterFaceStop: InterFaceStop) {
+        Companion.interFaceStop = myinterFaceStop
+    }
+
+
+
 
 }
